@@ -2,6 +2,7 @@ package com.example.ojsmodernandroidpractice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.room.Room
 import com.example.ojsmodernandroidpractice.databinding.ActivityMainBinding
 import com.example.ojsmodernandroidpractice.models.Todo
@@ -22,8 +23,10 @@ class MainActivity : AppCompatActivity() {
             .allowMainThreadQueries()
             .build()
 
-        // 데이터베이스 전체 내용 가져와서 텍스트 뷰에 뿌려주기
-        mBinding.tvResult.text = db.todoDao().getAll().toString()
+        // 값이 변경되는 것을 감지하여 UI 자동 업데이트를 도와준다!
+        db.todoDao().getAll().observe(this, Observer { todos ->
+            mBinding.tvResult.text = todos.toString()
+        })
 
 
         // 할 일 추가 버튼 클릭
@@ -32,9 +35,6 @@ class MainActivity : AppCompatActivity() {
 
             // 데이터베이스에 insert
             db.todoDao().insert(newTodo)
-
-            // insert 된 내용 포함해서 다시 뿌리기
-            mBinding.tvResult.text = db.todoDao().getAll().toString()
         }
     }
 }
