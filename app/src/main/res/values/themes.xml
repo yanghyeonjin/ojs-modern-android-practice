@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+    <!-- theme가 DayNight를 상속받으면 다크테마를 지원할 수 있다. -->
     <style name="Theme.OJSModernAndroidPractice" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
