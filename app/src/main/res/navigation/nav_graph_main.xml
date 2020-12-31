@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/todo_dest">
+
+    <fragment
+        android:id="@+id/todo_dest"
+        android:label="할 일"
+        android:name="com.example.ojsmodernandroidpractice.screens.TodoFragment"
+        tools:layout="@layout/fragment_todo">
+
+        <action
+            android:id="@+id/action_from_todo_to_details"
+            app:destination="@id/details_dest"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_dest"
+        android:label="자세히보기"
+        android:name="com.example.ojsmodernandroidpractice.screens.DetailsFragment"
+        tools:layout="@layout/fragment_details">
+
+        <!-- 받는 쪽에서 argument 설정 -->
+        <argument
+            android:name="text"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+
+</navigation>
