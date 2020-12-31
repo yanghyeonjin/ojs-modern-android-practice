@@ -55,4 +55,6 @@ dependencies {
 
     // use coroutines for LifecycleScope
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+
+    implementation "androidx.activity:activity-ktx:1.1.0"
 }
